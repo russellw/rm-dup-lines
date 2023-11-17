@@ -50,7 +50,7 @@ foreach (var file in files) {
 			}
 		v.Add(s);
 	}
-		if (v.Count > 0 && v.Last()=="")
+	if (v.Count > 0 && v.Last() == "")
 		v.RemoveAt(v.Count - 1);
 	if (inplace) {
 		if (n == 0)
@@ -72,12 +72,10 @@ void Help() {
 	Console.WriteLine("-i  In-place edit");
 }
 
-void WriteLines(string file, IEnumerable<string> v)
-{
-    using (StreamWriter writer = new StreamWriter(file))
-    {
-        writer.NewLine = "\n";
-        foreach (var s in v)
-            writer.WriteLine(s);
-    }
+void WriteLines(string file, IEnumerable<string> v) {
+	using (StreamWriter writer = new StreamWriter(file)) {
+		writer.NewLine = "\n";
+		foreach (var s in v)
+			writer.WriteLine(s);
+	}
 }
