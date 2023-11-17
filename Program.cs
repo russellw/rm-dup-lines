@@ -23,7 +23,7 @@ foreach (var arg in args) {
 			case "-V":
 			case "-v":
 			case "-version":
-				Console.WriteLine("rm-dup-lines 0.1");
+				Console.WriteLine("rm-dup-lines 1.0");
 				return 0;
 			default:
 				Console.WriteLine("{0}: unknown option", arg);
