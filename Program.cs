@@ -64,7 +64,7 @@ foreach (var file in files) {
 }
 return 0;
 
-void Help() {
+static void Help() {
 	Console.WriteLine("Usage: rm-dup-lines [options] file...");
 	Console.WriteLine("");
 	Console.WriteLine("-h  Show help");
