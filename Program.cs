@@ -72,7 +72,7 @@ static void Help() {
 	Console.WriteLine("-i  In-place edit");
 }
 
-void WriteLines(string file, IEnumerable<string> v) {
+static void WriteLines(string file, IEnumerable<string> v) {
 	using (StreamWriter writer = new StreamWriter(file)) {
 		writer.NewLine = "\n";
 		foreach (var s in v)
