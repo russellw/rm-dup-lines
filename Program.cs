@@ -50,10 +50,12 @@ foreach (var file in files) {
 			}
 		v.Add(s);
 	}
+		if (v.Count > 0 && v.Last()=="")
+		v.RemoveAt(v.Count - 1);
 	if (inplace) {
 		if (n == 0)
 			continue;
-		File.WriteAllLines(file, v);
+		WriteLines(file, v);
 		Console.WriteLine($"{file}\t{n}");
 		continue;
 	}
@@ -68,4 +70,14 @@ void Help() {
 	Console.WriteLine("-h  Show help");
 	Console.WriteLine("-V  Show version");
 	Console.WriteLine("-i  In-place edit");
+}
+
+void WriteLines(string file, IEnumerable<string> v)
+{
+    using (StreamWriter writer = new StreamWriter(file))
+    {
+        writer.NewLine = "\n";
+        foreach (var s in v)
+            writer.WriteLine(s);
+    }
 }
