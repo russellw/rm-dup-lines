@@ -73,9 +73,8 @@ static void Help() {
 }
 
 static void WriteLines(string file, IEnumerable<string> v) {
-	using (StreamWriter writer = new StreamWriter(file)) {
-		writer.NewLine = "\n";
-		foreach (var s in v)
-			writer.WriteLine(s);
-	}
+	using var writer = new StreamWriter(file);
+	writer.NewLine = "\n";
+	foreach (var s in v)
+		writer.WriteLine(s);
 }
