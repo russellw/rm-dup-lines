@@ -1,5 +1,5 @@
 var options = true;
-var inplace = true;
+var inplace = false;
 var files = new List<string>();
 foreach (var arg in args) {
 	var s = arg;
@@ -37,6 +37,28 @@ foreach (var arg in args) {
 if (files.Count == 0) {
 	Help();
 	return 0;
+}
+
+foreach (var file in files) {
+	var n = 0;
+	var v = new List<string>();
+	foreach (var s in File.ReadLines(file)) {
+		if (v.Count > 0)
+			if (v[v.Count - 1] == s || v.Count > 1 && v[v.Count - 2] == s && v[v.Count - 1] == "") {
+				n++;
+				continue;
+			}
+		v.Add(s);
+	}
+	if (inplace) {
+		if (n == 0)
+			continue;
+		File.WriteAllLines(file, v);
+		Console.WriteLine($"{file}\t{n}");
+		continue;
+	}
+	foreach (var s in v)
+		Console.WriteLine(s);
 }
 return 0;
 
